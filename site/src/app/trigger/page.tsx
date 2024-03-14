@@ -13,11 +13,11 @@ export default function Trigger() {
     setIsActive(!isActive)
 
     if (isActive == true) {
-      axios.get("http://140.238.188.122:3052/unlock")
+      axios.get("/api/unlock")
     }
 
     if (isActive == false) {
-      axios.get("http://140.238.188.122:3052/lock")
+      axios.get("/api/lock")
     }
   }
 
@@ -29,7 +29,7 @@ export default function Trigger() {
       setIsUserLogged(true)
     }
 
-    axios.get("http://140.238.188.122:3052/lockstate").then(response => {
+    axios.get("/api/lockstate").then(response => {
       setIsActive(response.data.lockState)
     })
   }, [])
