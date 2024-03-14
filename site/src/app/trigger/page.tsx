@@ -13,11 +13,11 @@ export default function Trigger() {
     setIsActive(!isActive)
 
     if (isActive == true) {
-      axios.get("/api/unlock")
+      axios.post("/api/unlock")
     }
 
     if (isActive == false) {
-      axios.get("/api/lock")
+      axios.post("/api/lock")
     }
   }
 
@@ -29,8 +29,8 @@ export default function Trigger() {
       setIsUserLogged(true)
     }
 
-    fetch("/api/lockstate", { next: { revalidate: 1 } }).then(response => response.json()).then(data => {
-      setIsActive(data.fetchData.lockState)
+    axios.post("/api/lockstate").then(response => {
+      setIsActive(response.data.data.lockState)
     })
   }, [])
 
