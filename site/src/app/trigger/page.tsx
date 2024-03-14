@@ -29,8 +29,8 @@ export default function Trigger() {
       setIsUserLogged(true)
     }
 
-    axios.get("/api/lockstate").then(response => {
-      setIsActive(response.data.lockState)
+    fetch("/api/lockstate", { next: { revalidate: 0 } }).then(response => response.json()).then(data => {
+      setIsActive(data.fetchData.lockState)
     })
   }, [])
 
