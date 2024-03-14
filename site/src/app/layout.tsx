@@ -1,6 +1,7 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google"
-import "./globals.css";
+import Head from "next/head";
 
 import { cn } from "../lib/utils"
 import { ThemeProvider } from "@/components/theme-provider";
@@ -22,6 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+      </Head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
@@ -31,7 +35,6 @@ export default function RootLayout({
         <ThemeProvider defaultTheme="dark" attribute="class">
           {children}
         </ThemeProvider>
-
       </body>
     </html>
   );
