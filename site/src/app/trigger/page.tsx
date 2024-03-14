@@ -29,7 +29,7 @@ export default function Trigger() {
       setIsUserLogged(true)
     }
 
-    fetch("/api/lockstate", { next: { revalidate: 0 } }).then(response => response.json()).then(data => {
+    fetch("/api/lockstate", { next: { revalidate: 1 } }).then(response => response.json()).then(data => {
       setIsActive(data.fetchData.lockState)
     })
   }, [])
